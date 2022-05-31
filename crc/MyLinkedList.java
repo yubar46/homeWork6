@@ -1,4 +1,6 @@
-public class MyLinkedList<T> {
+import java.util.Iterator;
+
+public class MyLinkedList<T> implements Iterable<T> {
 
     private Node<T>  head ;
 
@@ -81,5 +83,25 @@ public class MyLinkedList<T> {
             node.next = node.next.next;
         }
 
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new Iterator<T>() {
+            Node<T> current =head;
+
+            @Override
+            public boolean hasNext() {
+                return current==null;
+            }
+
+            @Override
+            public T next() {
+                if (current==null)throw new IllegalArgumentException();
+                T value = current.value;
+                current = current.next;
+                return value;
+            }
+        };
     }
 }
