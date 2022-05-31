@@ -56,4 +56,30 @@ public class MyLinkedList<T> {
         }
             return false;
     }
+
+    public T getIndex (int index){
+        if (head==null)throw new ArrayIndexOutOfBoundsException();
+        for (int i = 0;i<index;i++){
+            head=head.next;
+
+        }
+        if (head==null)throw new ArrayIndexOutOfBoundsException();
+        return head.value;
+    }
+    public void delete(int index){
+        if (index==0){
+            if (head==null)throw new ArrayIndexOutOfBoundsException();
+            head=head.next;
+        }else {
+            Node<T> node = head;
+            for (int i = 0 ; i<index-1;i++){
+                if (node==null)throw new ArrayIndexOutOfBoundsException();
+                node= node.next;
+            }
+            if (node.value==null)throw new ArrayIndexOutOfBoundsException();
+            if (node.next.value==null)throw new ArrayIndexOutOfBoundsException();
+            node.next = node.next.next;
+        }
+
+    }
 }
