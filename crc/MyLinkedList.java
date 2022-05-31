@@ -1,6 +1,6 @@
 public class MyLinkedList<T> {
 
-    private Node<T>  head;
+    private Node<T>  head ;
 
     public MyLinkedList(Node<T> head) {
         this.head = head;
@@ -10,7 +10,9 @@ public class MyLinkedList<T> {
     }
 
     public MyLinkedList(T value){
-        this.head.value = value;
+        Node node =new Node();
+        node.value = value;
+        head =node;
     }
 
     public Node<T> getHead() {  //لارم مشه پاک میشه
@@ -46,5 +48,12 @@ public class MyLinkedList<T> {
 
     }
 
-
+    public boolean contain(T value){
+        Node node =this.head;
+        while (node!=null){
+            if (node.value.equals(value))return true;
+            node=node.next;
+        }
+            return false;
+    }
 }
